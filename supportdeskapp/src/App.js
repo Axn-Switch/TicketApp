@@ -6,6 +6,9 @@ import Login from './pages/login'
 import Header from './components/header'
 import Register from './pages/register'
 import LogoutPage from './pages/logoutpage'
+import NewTicket from './pages/NewTicket'
+import Tickets from './pages/Tickets'
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -18,6 +21,12 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/logout' element={<LogoutPage/>}/>
+            <Route path='/new-ticket' element={<PrivateRoute/>}>
+              <Route path='/new-ticket' element={<NewTicket/>}/>
+            </Route>
+            <Route path='/tickets' element={<PrivateRoute/>}>
+              <Route path='/tickets' element={<Tickets/>}/>
+            </Route>
           </Routes>
         </div>
       </Router>
