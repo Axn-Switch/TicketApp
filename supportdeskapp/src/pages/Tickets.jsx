@@ -26,6 +26,9 @@ function Tickets() {
         return <Spinner/>
     }
 
+    if(tickets === null){
+        return <h1>No tickets to display</h1>
+    }
   return (
     <>
         <BackButton url='/'/>
@@ -37,9 +40,12 @@ function Tickets() {
                 <div>Status</div>
                 <div></div>
             </div>
-            {tickets.map((ticket) => (
-                <TicketItem key={ticket._id} ticket={ticket}/>
-            ))}
+            {tickets?.length ?
+                tickets.map((ticket) => (
+                    <TicketItem key={ticket._id} ticket={ticket}/>
+                ))
+                : <h3>No Tickets to display</h3>
+            }       
         </div>
     </>
   )
