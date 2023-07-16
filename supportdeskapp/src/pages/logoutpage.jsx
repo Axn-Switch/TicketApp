@@ -11,6 +11,7 @@ function Logoutpage() {
   return (
     <section className="heading">
         <h1>Successfully logged out</h1>
+        <p>We hope to see you soon :)</p>
     </section>
   )
 }
