@@ -18,7 +18,7 @@ app.use('/api/tickets', require('./routes/ticketRoutes'))
 
 //serve frontend
     app.use(express.static(path.join(__dirname, '../supportdeskapp/build')))
-    app.get('*', (req, res) => res.sendFile(__dirname, '../', 'supportdeskapp', 'build', 'index.html'))
+    app.get('/', (req, res) => res.sendFile(__dirname, '../', 'supportdeskapp', 'build', 'index.html'))
 
 
 app.use(errorHandler)
