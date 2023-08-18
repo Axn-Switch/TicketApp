@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const dotenv = require('dotenv').config()
 const {errorHandler} = require('./midpointers/errorpointer')
@@ -9,13 +10,23 @@ connectToDb()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.get('/', (req, res) =>{
-    res.json({message : "welcome"})
-})
 
 //Routes
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/tickets', require('./routes/ticketRoutes'))
+
+
+//serve frontend
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../supportdeskapp/build')))
+    app.get('*', (req, res) => res.sendFile(__dirname, '../', 'supportdeskapp', 'build', 'index.html'))
+}
+else{
+    app.get('/', (req, res) =>{
+        res.json({message : "welcome"})
+    })
+    
+}
 
 app.use(errorHandler)
 
