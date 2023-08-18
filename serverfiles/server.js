@@ -19,10 +19,10 @@ app.use('/api/tickets', require('./routes/ticketRoutes'))
 //serve frontend
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, '../supportdeskapp/build')))
-    app.get('*', (_, res) => res.sendFile(__dirname, '../', 'supportdeskapp', 'build', 'index.html'))
+    app.get('*', (req, res) => res.sendFile(__dirname, '../', 'supportdeskapp', 'build', 'index.html'))
 }
 else{
-    app.get('/', (_, res) =>{
+    app.get('/', (req, res) =>{
         res.json({message : "welcome"})
     })
     
