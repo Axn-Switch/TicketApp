@@ -17,7 +17,7 @@ app.use('/api/tickets', require('./routes/ticketRoutes'))
 
 
 //serve frontend
-if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'development'){
     app.use(express.static(path.join(__dirname, '../supportdeskapp/build')))
     app.get('*', (req, res) => res.sendFile(__dirname, '../', 'supportdeskapp', 'build', 'index.html'))
 }
