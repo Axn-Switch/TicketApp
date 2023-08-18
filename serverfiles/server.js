@@ -23,7 +23,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 else{
     app.get('/', (req, res) =>{
-        res.json({message : process.env.NODE_ENV.toString() })
+        res.json({message : "this doesnt work" })
     })
     
 }
